@@ -1,3 +1,10 @@
+<?php 
+// Imoirtando as funções de manipulação de fabricantes
+require_once "../src/funcoes_fabricantes.php";
+
+// Guardando o retorno/resultado da função lerFabricantes
+$listaDeFabricantes = lerFabricantes($conexao);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,5 +20,31 @@
     <p>
         <a href="inserir.php">Inserir fabricantes</a>
     </p>
+    <table>
+        <caption>Lista de Fabricantes</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($listaDeFabricantes as $listaDeFabricante){
+            ?>
+            <tr>
+                <td><?=$listaDeFabricante["id"]?></td>
+                <td><?=$listaDeFabricante["nome"]?></td>
+                <td>
+                    <a href="">Excluir</a> 
+                    <a href="">Editar</a>
+                </td>
+            </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
 </body>
 </html>
