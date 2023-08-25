@@ -4,6 +4,9 @@ require_once "../src/funcoes_fabricantes.php";
 
 // Guardando o retorno/resultado da função lerFabricantes
 $listaDeFabricantes = lerFabricantes($conexao);
+
+// Contando quantos fabricantes temos na matriz $listaDeFabricantes
+$quantidade = count($listaDeFabricantes)
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +24,7 @@ $listaDeFabricantes = lerFabricantes($conexao);
         <a href="inserir.php">Inserir fabricantes</a>
     </p>
     <table>
-        <caption>Lista de Fabricantes</caption>
+        <caption>Lista de Fabricantes: <b><?=$quantidade?></b></caption>
         <thead>
             <tr>
                 <th>ID</th>
