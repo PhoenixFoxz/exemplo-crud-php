@@ -34,14 +34,18 @@ $quantidade = count($listaDeFabricantes)
         </thead>
         <tbody>
             <?php
-            foreach ($listaDeFabricantes as $listaDeFabricante){
+            foreach ($listaDeFabricantes as $fabricante){
             ?>
             <tr>
-                <td><?=$listaDeFabricante["id"]?></td>
-                <td><?=$listaDeFabricante["nome"]?></td>
+                <td><?=$fabricante["id"]?></td>
+                <td><?=$fabricante["nome"]?></td>
                 <td>
+                    <!-- Link DINÂMICO
+                A URL do href precisa de parâmetro com dados dinâmicos (no caso, o ID de cada fabricante) -->
+                    <a href="atualizar.php?id=<?=$fabricante["id"]?>">
+                        Editar
+                     </a>
                     <a href="">Excluir</a> 
-                    <a href="atualizar.php">Editar</a>
                 </td>
             </tr>
             <?php
