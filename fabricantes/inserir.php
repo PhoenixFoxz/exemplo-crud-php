@@ -34,5 +34,9 @@ if(isset($_POST["inserir"])){
         </p>
         <button type="submit" name="inserir">Inserir fabricantes</button>
     </form>
+
+    <hr>
+    <p><a href="visualizar.php">Voltar</a></p>
+
 </body>
 </html>

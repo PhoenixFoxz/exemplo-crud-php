@@ -41,7 +41,7 @@ $quantidade = count($listaDeFabricantes)
                 <td><?=$listaDeFabricante["nome"]?></td>
                 <td>
                     <a href="">Excluir</a> 
-                    <a href="">Editar</a>
+                    <a href="atualizar.php">Editar</a>
                 </td>
             </tr>
             <?php
