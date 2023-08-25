@@ -4,7 +4,7 @@
 // Script de conexão ao servidor de Banco de Dados
 
 // Parâmetros de acesso
-$servidor = "comeca-a-bloquear-a-maquina";
+$servidor = "localhost";
 $usuario = "root";
 $senha = "";
 $banco = "vendas";

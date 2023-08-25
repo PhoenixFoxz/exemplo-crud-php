@@ -1,3 +1,8 @@
+<?php
+// Obtendo e sanitizando o valor vindo do parâmetro de URL (link dinâmico)
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+echo $id; 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
