@@ -1,13 +1,19 @@
 <?php 
 if(isset($_POST["inserir"])){
 
+    // Importando as funções e conexão
+    require_once "../src/funcoes_fabricantes.php";
     // Capturando o valor digitado do nome e sanitizando
     $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
 
     // Pode ser assim também:
     //$nome = filter_var($_POST['nome'], FILTER_SANITIZE_SPECIAL_CHARS);
 
-    echo $nome; 
+    // Chamar a função, passar os dados de conexão e o dado (nome do fabricante) digitado no formulário. 
+    inserirFabricante($conexao, $nome);
+
+    // Redirecionamento
+    header("location:visualizar.php");
 }
 ?>
 <!DOCTYPE html>

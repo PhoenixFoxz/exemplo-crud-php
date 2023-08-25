@@ -34,7 +34,7 @@ function lerFabricantes(PDO $conexao){
 // Usada em fabricantes/inserir.php
 function inserirFabricante(PDO $conexao, string $nomeDoFabricante){
     // :qualquerCoisa -> isso indica um "named parameter" (parâmetro nomeado)
-    $sql = "INSERT INTO fabricantes(nome) VALUE(:nome)";
+    $sql = "INSERT INTO fabricantes(nome) VALUE (:nome)";
 
     try {
         $consulta = $conexao->prepare($sql);
