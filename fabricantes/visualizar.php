@@ -55,7 +55,7 @@ if(isset($_GET["status"]) && $_GET["status"] === "sucesso"){
                     <a href="atualizar.php?id=<?=$fabricante["id"]?>">
                         Editar
                      </a>
-                    <a href="deletar.php?id=<?=$fabricante["id"]?>">Excluir</a> 
+                    <a class="excluir" href="deletar.php?id=<?=$fabricante["id"]?>">Excluir</a> 
                 </td>
             </tr>
             <?php
@@ -63,5 +63,7 @@ if(isset($_GET["status"]) && $_GET["status"] === "sucesso"){
             ?>
         </tbody>
     </table>
+
+    <script src="../js/confirma-exclusao-sem-acento.js"></script>
 </body>
 </html>
