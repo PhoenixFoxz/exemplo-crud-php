@@ -23,6 +23,16 @@ $quantidade = count($listaDeFabricantes)
     <p>
         <a href="inserir.php">Inserir fabricantes</a>
     </p>
+
+<!-- Feedback/Mensagem para o usuário indicando que o processo deu certo -->
+<?php 
+if(isset($_GET["status"]) && $_GET["status"] === "sucesso"){
+?>
+     <h2 style="color: blue;">Fabricante atualizado com sucesso!</h2>
+<?php
+}
+?>
+
     <table>
         <caption>Lista de Fabricantes: <b><?=$quantidade?></b></caption>
         <thead>
@@ -45,7 +55,7 @@ $quantidade = count($listaDeFabricantes)
                     <a href="atualizar.php?id=<?=$fabricante["id"]?>">
                         Editar
                      </a>
-                    <a href="">Excluir</a> 
+                    <a href="deletar.php?id=<?=$fabricante["id"]?>">Excluir</a> 
                 </td>
             </tr>
             <?php
