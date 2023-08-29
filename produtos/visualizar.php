@@ -1,3 +1,9 @@
+<?php 
+require_once "../src/funcoes_produtos.php";
+require_once "../src/funcoes_utilitarias.php";
+
+$listaDeProdutos = lerProdutos($conexao);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,21 +38,19 @@
         <a href="inserir.php">Inserir novo produto</a>
     </p>
     <div class="produtos">
-
+<?php
+foreach ($listaDeProdutos as $produto){
+    $preco = formatarPreco($produto["preco"]);
+?>
         <article class="produto">
-            <h3>Nome do Produto...</h3>
-            <p><b>Preço:</b>...</p>
-            <p><b>Quantidade:</b>...</p>
-            <p><b>Descrição:</b>...</p>
+            <h3> <?=$produto['nome']?> </h3>
+            <p><b>Preço:</b> <?=$preco?> </p>
+            <p><b>Quantidade:</b> <?=$produto['quantidade']?> </p>
+            <p><b>Descrição:</b> <?=$produto['descricao']?> </p>
         </article>
-
-        <article class="produto">
-            <h3>Nome do Produto...</h3>
-            <p><b>Preço:</b>...</p>
-            <p><b>Quantidade:</b>...</p>
-            <p><b>Descrição:</b>...</p>
-        </article>
-
+<?php
+}
+?>
     </div>
 </body>
 </html>
