@@ -40,12 +40,22 @@ $listaDeProdutos = lerProdutos($conexao);
     <div class="produtos">
 <?php
 foreach ($listaDeProdutos as $produto){
-    $preco = formatarPreco($produto["preco"]);
 ?>
         <article class="produto">
-            <h3> <?=$produto['nome']?> </h3>
-            <p><b>Preço:</b> <?=$preco?> </p>
+            <h3> <?=$produto['produto']?> </h3>
+            <h4> <?=$produto['fabricante']?> </h4>
+            <p><b>Preço:</b> <?=formatarPreco($produto['preco'])?> </p>
             <p><b>Quantidade:</b> <?=$produto['quantidade']?> </p>
+            <p><b>Total:
+            <!-- 1) Fazer a conta diretamente e passar o resultado pra formatação do preço -->   
+            </b><?=formatarPreco($produto['preco'] * $produto['quantidade'])?></p>
+            <p><b>Total:
+            <!-- 2) Fazer a conta direto na query SQL e pegar o resultado (coluna total) - além de passar pra formatação -->
+            </b><?=formatarPreco($produto['total'])?></p>
+
+            <p><b>Total:
+            <!-- 3) Fazer uma função de cálculo e pegar o resultado dela já calculado e formatado -->
+            </b><?=calcularTotal($produto['preco'], $produto['quantidade'])?></p>
             <p><b>Descrição:</b> <?=$produto['descricao']?> </p>
         </article>
 <?php
