@@ -57,6 +57,11 @@ foreach ($listaDeProdutos as $produto){
             <!-- 3) Fazer uma função de cálculo e pegar o resultado dela já calculado e formatado -->
             </b><?=calcularTotal($produto['preco'], $produto['quantidade'])?></p>
             <p><b>Descrição:</b> <?=$produto['descricao']?> </p>
+
+            <hr>
+            <p>
+                <a href="atualizar.php?id=<?=$produto['id']?>">Editar</a> | <a href="deletar.php">Excluir</a>
+            </p>
         </article>
 <?php
 }
