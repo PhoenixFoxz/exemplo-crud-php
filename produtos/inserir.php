@@ -25,7 +25,7 @@ if(isset($_POST['inserir'])){
         $conexao, $nome, $preco, $quantidade, $fabricanteid, $descricao
     );
 
-    header("visualizar.php");
+    header("location:visualizar.php");
 }
 
 ?>
