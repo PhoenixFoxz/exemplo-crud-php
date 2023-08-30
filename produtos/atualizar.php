@@ -41,6 +41,7 @@ $listaDeFabricantes = lerFabricantes($conexao);
                 <option value=""></option>
                 <?php
                 foreach ($listaDeFabricantes as $fabricante) {
+                    // Chave estrangeira === Chave primaria
                     if ($produto['fabricante_id'] === $fabricante['id']) {
                         /* Lógica/Algoritmo da seleção do fabricante
                         Se a chave estrangeira for idêntico à chave primária, ou
