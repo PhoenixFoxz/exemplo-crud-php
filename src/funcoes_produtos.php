@@ -37,3 +37,11 @@ function calcularTotal(float $valor, int $qtd):string {
   $total = $valor * $qtd;
   return formatarPreco($total);
 }
+
+function inserirProduto(
+  PDO $conexao, string $nome, float $preco, int $quantidade, int $fabricanteid,string $descricao ):void {
+
+    $sql = "INSERT INTO produtos(nome, preco, quantidade, descricao, fabricante_id) VALUES(:nome, :preco, :quantidade, :descricao, :fabricanteid)";
+
+    try {}
+}
