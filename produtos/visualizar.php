@@ -2,6 +2,8 @@
 require_once "../src/funcoes_produtos.php";
 require_once "../src/funcoes_utilitarias.php";
 
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
 $listaDeProdutos = lerProdutos($conexao);
 ?>
 <!DOCTYPE html>
@@ -60,7 +62,7 @@ foreach ($listaDeProdutos as $produto){
 
             <hr>
             <p>
-                <a href="atualizar.php?id=<?=$produto['id']?>">Editar</a> | <a href="deletar.php">Excluir</a>
+                <a href="atualizar.php?id=<?=$produto['id']?>">Editar</a> | <a href="deletar.php?id=<?=$produto['id']?>">Excluir</a>
             </p>
         </article>
 <?php

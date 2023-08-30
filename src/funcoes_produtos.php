@@ -60,12 +60,12 @@ function inserirProduto(
     }
 }
 
-function lerUmProduto(PDO $conexao, int $idProduto):array {
+function lerUmProduto(PDO $conexao, int $id):array {
   $sql = "SELECT * FROM produtos WHERE id = :id";
 
   try {
       $consulta = $conexao->prepare($sql);
-      $consulta->bindValue(":id", $idProduto, PDO::PARAM_INT);
+      $consulta->bindValue(":id", $id, PDO::PARAM_INT);
       $consulta->execute();
       $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
   
