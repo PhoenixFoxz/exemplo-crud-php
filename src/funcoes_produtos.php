@@ -75,3 +75,7 @@ function lerUmProduto(PDO $conexao, int $id):array {
 
   return $resultado;
 }
+
+function atualizarProduto(PDO $conexao, int $id, float $preco, string $nome, string $descricao, int $fabricanteid, int $quantidade):void {
+  $sql = "UPDATE produtos SET nome = :nome, descricao = :descricao, preco = :preco, fabricante_id = :fabricanteid, quantidade = :quantidade WHERE id = :id";
+}

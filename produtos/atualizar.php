@@ -7,7 +7,37 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 $produto = lerUmProduto($conexao, $id);
 $listaDeFabricantes = lerFabricantes($conexao);
 
+if (isset($_POST['atualizar'])) {
+    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
+    $preco = filter_input(
+        INPUT_POST,
+        "preco",
+        FILTER_SANITIZE_NUMBER_FLOAT,
+        FILTER_FLAG_ALLOW_FRACTION
+    );
 
+    $quantidade = filter_input(INPUT_POST, "qtd", FILTER_SANITIZE_NUMBER_INT);
+
+    // Pegaremos o Value, ou seja, o valor do id do fabricante
+    $fabricanteid = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
+
+    $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_SPECIAL_CHARS);
+
+    // Teste
+    //echo $nome, $preco, $quantidade, $fabricanteid, $descricao;
+
+    atualizarProduto(
+        $conexao,
+        $id,
+        $preco,
+        $nome,
+        $descricao,
+        $quantidade,
+        $fabricanteid
+    );
+
+    header("location:visualizar.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,31 +69,19 @@ $listaDeFabricantes = lerFabricantes($conexao);
             <label for="fabricante">Fabricante:</label>
             <select name="fabricante" value="" id="fabricante" require>
                 <option value=""></option>
-                <?php
-                foreach ($listaDeFabricantes as $fabricante) {
-                    // Chave estrangeira === Chave primaria
-                    if ($produto['fabricante_id'] === $fabricante['id']) {
-                        /* Lógica/Algoritmo da seleção do fabricante
-                        Se a chave estrangeira for idêntico à chave primária, ou
-                        seja, se o id do fabricante do produto (coluna 
-                        fabricante_id da tabela produtos)
-                        for igual ao id do fabricante (coluna id da tabela 
-                        fabricantes), então coloque o atributo "selected" no
-                        <option> */
+                <?php foreach ($listaDeFabricantes as $fabricante) {
+                    /* Lógica/Algoritmo da seleção do fabricante
+                    Se a chave estrangeira for idêntica à chave primária, ou seja, se o id do fabricante do produto (coluna fabricante_id da tabela produtos)
+                    for igual ao id do fabricante (coluna id da tabela fabricantes), então coloque o atributo "selected" no
+                    <option> */
                 ?>
-                        <option value="<?= $fabricante['id'] ?>" selected>
-                            <?= $fabricante['nome'] ?>
-                        </option>
-                    <?php
-                    } else {
-                    ?>
-                        <option value="<?= $fabricante['id'] ?>">
-                            <?= $fabricante['nome'] ?>
-                        </option>
-                <?php
-                    }
-                }
-                ?>
+                    <option <?php
+                            // chave estrangeira  ===  chave primaria
+                            if ($produto["fabricante_id"] === $fabricante["id"]) echo " selected ";
+                            ?> value="<?= $fabricante['id'] ?>">
+                        <?= $fabricante['nome'] ?>
+                    </option>
+                <?php } ?>
             </select>
         </p>
         <p>
