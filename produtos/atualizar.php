@@ -26,14 +26,19 @@ if (isset($_POST['atualizar'])) {
     // Teste
     //echo $nome, $preco, $quantidade, $fabricanteid, $descricao;
 
+ /*    echo "<pre>";
+    var_dump($produto);
+echo "</pre>";
+die(); */
+
     atualizarProduto(
         $conexao,
         $id,
         $preco,
         $nome,
         $descricao,
-        $quantidade,
-        $fabricanteid
+        $fabricanteid,
+        $quantidade
     );
 
     header("location:visualizar.php");
